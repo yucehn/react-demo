@@ -1,6 +1,6 @@
 import Item from "./Item";
 
-const List = ({ listData, deleteItem }) => {
+const List = ({ listData, deleteItem, submitStatus }) => {
   return (
     <div className="list">
       {listData.map((item) => {
@@ -13,6 +13,7 @@ const List = ({ listData, deleteItem }) => {
             date={date}
             time={time}
             deleteItem={deleteItem}
+            submitStatus={submitStatus}
           />
         );
       })}
