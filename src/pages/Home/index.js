@@ -3,46 +3,49 @@ import { API_GET_DATA } from "../../components/constants";
 
 import Edit from "./components/Edit";
 import List from "./components/List";
-import "./index.css";
+import "./index.scss";
 
-async function fetchData(setTodoList){
-  const res = await fetch(API_GET_DATA)
-  const { data } = await res.json()
-  setTodoList(data)
+async function fetchData(setTodoList) {
+  const res = await fetch(API_GET_DATA);
+  const { data } = await res.json();
+  setTodoList(data);
 }
 
-async function fetchSetData(todoList){
+async function fetchSetData(todoList) {
   await fetch(API_GET_DATA, {
-    method: 'PUT',
+    method: "PUT",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({data:todoList})
-  })
+    body: JSON.stringify({ data: todoList }),
+  });
 }
 
-const Home = () => { 
+const Home = () => {
   const [todoList, setTodoList] = useState([]);
   const submitStatus = useRef(false);
-  useEffect(()=>{
-    if(!submitStatus.current){
-      return
+  useEffect(() => {
+    if (!submitStatus.current) {
+      return;
     }
-    fetchSetData(todoList)
-      .then(todoList => submitStatus.current = false)
-  },[todoList])
+    fetchSetData(todoList).then((todoList) => (submitStatus.current = false));
+  }, [todoList]);
 
-  useEffect(()=>{
+  useEffect(() => {
     // 綁定事情
     fetchData(setTodoList);
     // return () =>{
     //   // 取消綁定
     // }
-  }, [])
+  }, []);
   return (
     <div className="app">
       <Edit add={setTodoList} submitStatus={submitStatus} />
-      <List listData={todoList} deleteItem={setTodoList} submitStatus={submitStatus} />
+      <List
+        listData={todoList}
+        deleteItem={setTodoList}
+        submitStatus={submitStatus}
+      />
     </div>
   );
 };
