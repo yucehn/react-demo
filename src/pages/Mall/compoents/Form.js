@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import {API_GET_FEEDBACK} from "../../../components/constants";
 import { v4 } from "uuid";
 import { useEffect, useState } from "react";
+import useFetch from "../../../hook/useFetch";
 
 async function fetchSetData(data){
   console.log('fetchSetData', data)
@@ -10,16 +11,8 @@ async function fetchSetData(data){
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify({data})
   })
-}
-
-async function fetchFeedback(setFeedback){
-  fetch(API_GET_FEEDBACK).then((res)=>{
-    return res.json();
-  }).then(({data})=>{
-    setFeedback(data);
-  });
 }
 
 // async function deleteFeedback(id){
@@ -34,10 +27,7 @@ async function fetchFeedback(setFeedback){
 // }
 
 const From = ()=>{
-  const [feedback, setFeedback] = useState(null);
-  useEffect(()=>{
-    fetchFeedback(setFeedback)
-  },[])
+  const { data: feedback } = useFetch(API_GET_FEEDBACK);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => {
     fetchSetData({
