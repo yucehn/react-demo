@@ -61,13 +61,13 @@ const From = ()=>{
         <input type="submit" />
       </form>
       <div>
-        蒐集feedback
         {
-          <div>
-          <div>{feedback?.lastName} 先生/小姐</div>
-          <div>{feedback?.intro}</div>
-          {/* <button onClick={()=>deleteFeedback(feedback?.id)}>delete</button> */}
-        </div>
+          JSON.stringify(feedback) !== '{}'? (<div>
+            蒐集feedback
+            <div>{feedback?.lastName} 先生/小姐</div>
+            <div>{feedback?.intro}</div>
+            {/* <button onClick={()=>deleteFeedback(feedback?.id)}>delete</button> */}
+          </div>):''
         }
       </div>
     </div>
