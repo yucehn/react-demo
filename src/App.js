@@ -4,7 +4,9 @@ import "./App.css";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Mall from "./pages/Mall"; 
+import Mall from "./pages/Mall";
+import MenuItem from "./pages/Mall/components/MenuItem";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -13,8 +15,9 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="mall" element={<Mall />} />
+          <Route path="/menu-item/:id" element={<MenuItem />} />
           <Route path="about" element={<About />} />
-          <Route path="*" element={<Navigate to="/" replace={true} />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

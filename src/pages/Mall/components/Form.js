@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import {API_GET_FEEDBACK} from "../../../components/constants";
 import { v4 } from "uuid";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import useFetch from "../../../hook/useFetch";
 
 async function fetchSetData(data){
