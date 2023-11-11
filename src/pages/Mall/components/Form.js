@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import {API_GET_FEEDBACK} from "../../../components/constants";
 import { v4 } from "uuid";
 // import { useEffect, useState } from "react";
+import styled, { css } from "styled-components";
+import { InputStyle, ExtendInputStyle } from "../../InputStyle";
 import useFetch from "../../../hook/useFetch";
 
 async function fetchSetData(data){
@@ -40,15 +42,15 @@ const From = ()=>{
     <div>
       From
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input placeholder="firstName" {...register("firstName", { required: true, maxLength: 20 })} />
+        <Input secondary={errors.firstName} placeholder="firstName" {...register("firstName", { required: true, maxLength: 20 })} />
         {errors.firstName && <span>maxLength 20</span>}
-        <input placeholder="lastName" {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
+        <InputStyle placeholder="lastName" {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
         {errors.lastName && <span>英文字母</span>}
-        <input placeholder="age" type="number" {...register("age", { min: 18, max: 99 })} />
+        <Input secondary={errors.age} placeholder="age" type="number" {...register("age", { min: 18, max: 99 })} />
         {errors.age && <span>age 18~99</span>}
-        <input placeholder="說明文字" {...register("intro", { required: true })} />
+        <ExtendInput placeholder="說明文字" {...register("intro", { required: true })} />
         {errors.intro && <span>This field is required</span>}
-        <input type="submit" />
+        <Button type="submit">submit</Button>
       </form>
       <div>
         {
@@ -63,5 +65,34 @@ const From = ()=>{
     </div>
   )
 }
+
+const Input = styled.input`
+  margin: 5px auto;
+  ${(props) => 
+    (props.primary &&
+      css`
+        border: 2px solid green;
+      `
+    ) ||
+    (props.secondary &&
+      css`
+        border: 2px solid red;
+      `
+    )
+  }
+`;
+const ExtendInput = styled(Input)`
+  color: gray;
+  font-weight: bold;
+`; 
+const Button = styled.button.attrs({className:"button-style"})`
+  width: 100%;
+  background-color: green;
+  color: white;
+  &:hover{
+    background-color: aquamarine;
+    color: green;
+  }
+`
 
 export default From;

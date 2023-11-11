@@ -1,10 +1,11 @@
 // import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { API_GET_MENU } from "../../components/constants";
 
 import "./index.scss";
+
 import Form from "./components/Form";
 import useFetch from "../../hook/useFetch";
-import { Link } from "react-router-dom";
 
 const Mall = () => {
   const {data: menu} = useFetch(API_GET_MENU);
