@@ -40,17 +40,21 @@ const From = ()=>{
   
   return (
     <div>
-      From
+      <div className="fz-3 mb-3">From</div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input secondary={errors.firstName} placeholder="firstName" {...register("firstName", { required: true, maxLength: 20 })} />
         {errors.firstName && <span>maxLength 20</span>}
+        
         <InputStyle placeholder="lastName" {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
         {errors.lastName && <span>英文字母</span>}
+        
         <Input secondary={errors.age} placeholder="age" type="number" {...register("age", { min: 18, max: 99 })} />
         {errors.age && <span>age 18~99</span>}
+        
         <ExtendInput placeholder="說明文字" {...register("intro", { required: true })} />
         {errors.intro && <span>This field is required</span>}
-        <Button type="submit">submit</Button>
+        
+        <Button theme={theme} type="submit">submit</Button>
       </form>
       <div>
         {
@@ -84,15 +88,23 @@ const Input = styled.input`
 const ExtendInput = styled(Input)`
   color: gray;
   font-weight: bold;
-`; 
+`;
+
+const theme = {
+  primary: "orange",
+  secondary: "blue"
+}
+
 const Button = styled.button.attrs({className:"button-style"})`
   width: 100%;
-  background-color: green;
+  background-color: ${(props)=> props.theme.primary};
   color: white;
   &:hover{
     background-color: aquamarine;
     color: green;
   }
-`
+`;
+
+
 
 export default From;

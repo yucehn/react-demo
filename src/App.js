@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"; // Navigate
 
-import "./App.css";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -8,6 +7,8 @@ import Mall from "./pages/Mall";
 import MenuItem from "./pages/Mall/components/MenuItem";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
+
+import "./App.css";
 
 function App() {
   return (
