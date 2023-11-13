@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Mall from "./pages/Mall";
 import MenuItem from "./pages/Mall/components/MenuItem";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="mall" element={<Mall />} />
           <Route path="/menu-item/:id" element={<MenuItem />} />
           <Route path="about" element={<About />} />
+          <Route path="login" element={<Login />}/>
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

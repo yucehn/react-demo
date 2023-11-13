@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 const InputStyle = styled.input`
   margin: 5px auto;
-  background-color: #000;
+  width: 50vw;
   ${(props) => 
     (props.primary &&
       css`
@@ -14,6 +14,10 @@ const InputStyle = styled.input`
         border: 2px solid red;
       `
     )
+  }
+  &:focus {
+    border-color: orange;
+    outline: none;
   }
 `;
 const ExtendInputStyle = styled(InputStyle)`
