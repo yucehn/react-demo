@@ -3,6 +3,7 @@ import { ExtendInputStyle } from "../InputStyle";
 
 import HookTimer from "./components/HookTimer";
 import PrevData from "./components/PrevData";
+import ReduxCounter from "./components/ReduxCounter";
 
 const Login = ()=>{
   // 1.宣告ref並初始化
@@ -27,6 +28,7 @@ const Login = ()=>{
       </div>
       <HookTimer />
       <PrevData />
+      <ReduxCounter />
     </div>
   )
 }
