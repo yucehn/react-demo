@@ -1,0 +1,37 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+# workflow名稱。 省略的話，預設為當前workflow檔名
+name: Node.js CI
+# 觸發workflow的條件，
+on:
+# 只有main分支發生push事件時，才會觸發workflow
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+# jobs表示執行的一項或多項任務
+jobs:
+# 任務的job_id，具體名稱自定義，這裡build代表打包
+  build:
+# runs-on欄位指定執行所需的虛擬機器環境。 注意：這個是必填字段
+    runs-on: ubuntu-latest
+# 用於設定目前workflow的參數
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+# steps欄位指定每個job的運行步驟，可以包含一個或多個步驟，每個步驟都可以配置指定字段
+    steps:
+    # 切程式碼到 runner
+    - uses: actions/checkout@v3
+    # 在目前作業系統安裝node
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+# 該運行的命令或者action
+# 安裝依賴、執行測試、打包
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
