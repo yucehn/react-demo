@@ -1,9 +1,6 @@
 {
   "posts": [
-    {
-      "data": [],
-      "id": 1
-    },
+    { "data": [], "id": 1 },
     {
       "id": "menu",
       "data": [
@@ -27,9 +24,6 @@
         }
       ]
     },
-    {
-      "data": {},
-      "id": "feedback"
-    }
+    { "data": {}, "id": "feedback" }
   ]
 }
