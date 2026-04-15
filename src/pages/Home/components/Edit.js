@@ -31,7 +31,7 @@ const Edit = ({ add, submitStatus }) => {
   }
 
   return (
-    <div style={{ width: "50%" }}>
+    <div className="todo-edit">
       <h1>備忘錄</h1>
       <p>記事：</p>
       <input type="text" value={note || ""} onChange={noteChange} />
