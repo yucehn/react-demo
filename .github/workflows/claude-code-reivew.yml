@@ -35,7 +35,7 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          custom_prompt: ${{vars.REACT_CLAUDE_REVIEW_SYSTEM_PROMPT}}
+          custom_prompt: "${{ vars.REACT_CLAUDE_REVIEW_SYSTEM_PROMPT }}"
 
           # Optional: Customize the trigger phrase (default: @claude)
           # trigger_phrase: "/claude"
